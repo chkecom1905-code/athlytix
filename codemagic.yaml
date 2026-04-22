@@ -11,10 +11,14 @@ workflows:
         script: |
           cd athlytix
           flutter pub get
+      - name: Regenerate iOS folder
+        script: |
+          cd athlytix
+          flutter create --platforms=ios .
       - name: Install pods
         script: |
           cd athlytix/ios
-          pod install
+          pod install --repo-update
       - name: Build iOS
         script: |
           cd athlytix
