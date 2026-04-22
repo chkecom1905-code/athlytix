@@ -1,0 +1,23 @@
+ATHLYTIX est l'application de progression basket conçue pour les vrais compétiteurs.
+
+🏀 WORKOUTS
+Complète des sessions de dribble, tir, défense et physique. Gagne de l'XP et monte en niveau chaque jour.
+
+⚔️ DUELS EN LIGNE
+Affronte des joueurs réels en temps réel ou entraîne-toi contre 5 niveaux de robots IA. QCM techniques par compétence (Tir, Dribble, Défense, Drive).
+
+🎬 MOVES & SCAN IA
+Apprends les techniques des meilleurs joueurs NBA :
+• Moves gratuits : Crossover, Behind the Back, Spin Move...
+• 15 Moves pros exclusifs (Curry Shake, LeBron Euro Step, Doncic Step-Back...) à 5€ chacun, accès à vie.
+Le Scan IA utilise la détection de pose en temps réel pour analyser tes mouvements, valider les bons gestes et corriger les erreurs.
+
+📋 PROGRAMMES D'ENTRAÎNEMENT
+Des programmes structurés pour progresser durablement :
+• Gratuits : Débutant 30 Jours, Shooter Elite, Ball Handling Pro, Défense First
+• Pros : Méthode Curry (9,99€), LeBron Power Forward, KD Mid-Range, Harden Scoring...
+
+⚡ SYSTÈME XP & NIVEAUX
+Monte en niveau, maintiens ta streak quotidienne, débloque des récompenses et rejoins le classement.
+
+TÉLÉCHARGE ATHLYTIX et deviens le joueur que tu as toujours voulu être.

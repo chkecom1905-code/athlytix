@@ -1,0 +1,4 @@
+app_identifier("com.athlytix.app")
+apple_id("VOTRE_APPLE_ID@email.com")        # Your Apple ID
+itc_team_id("VOTRE_ITC_TEAM_ID")            # App Store Connect Team ID
+team_id("VOTRE_TEAM_ID")                    # Apple Developer Team ID

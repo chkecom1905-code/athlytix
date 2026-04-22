@@ -1,0 +1,8 @@
+🆕 Version 4.0 — Mise à jour majeure !
+
+• ⚔️ Duels en ligne vs joueurs réels ou robots IA
+• 🎬 15 Moves de pros avec Scan IA (Curry, LeBron, KD...)
+• 📋 6 Programmes pros par joueur NBA
+• 📷 Scan vidéo renforcé — détection de pose en temps réel
+• 🎯 Navigation repensée en 6 onglets
+• ✨ Nombreuses améliorations de performance

@@ -1,0 +1,73 @@
+# ============================================================
+# ATHLYTIX — iOS Fastlane
+# ============================================================
+# Setup:
+#   1. gem install fastlane
+#   2. fastlane match init  (certificates & provisioning)
+#   3. Run: cd ios && fastlane beta  (or release)
+# ============================================================
+
+default_platform(:ios)
+
+platform :ios do
+
+  before_all do
+    setup_ci if ENV['CI']
+  end
+
+  # ── Sync certificates (read-only in CI) ──────────────────
+  lane :certs do
+    match(type: "appstore", readonly: is_ci)
+  end
+
+  # ── Build IPA ────────────────────────────────────────────
+  lane :build do
+    certs
+    gym(
+      scheme:                  "Runner",
+      workspace:               "Runner.xcworkspace",
+      configuration:           "Release",
+      export_method:           "app-store",
+      output_directory:        "./build",
+      output_name:             "athlytix.ipa",
+      clean:                   true,
+      include_bitcode:         false,
+      export_options: {
+        provisioningProfiles: {
+          "com.athlytix.app" => "match AppStore com.athlytix.app"
+        }
+      }
+    )
+  end
+
+  # ── TestFlight beta ───────────────────────────────────────
+  lane :beta do
+    build
+    upload_to_testflight(
+      ipa:                   "./build/athlytix.ipa",
+      skip_waiting_for_build_processing: true,
+      changelog:             "Nouvelle version ATHLYTIX — Duels, Moves & Scan IA",
+    )
+  end
+
+  # ── App Store production ──────────────────────────────────
+  lane :release do
+    build
+    upload_to_app_store(
+      ipa:                      "./build/athlytix.ipa",
+      submit_for_review:        false,   # set true for auto-submit
+      automatic_release:        false,
+      force:                    true,
+      skip_metadata:            false,
+      skip_screenshots:         false,
+      metadata_path:            "./fastlane/metadata",
+      screenshots_path:         "./fastlane/screenshots",
+    )
+  end
+
+  # ── Bump build number ─────────────────────────────────────
+  lane :bump do
+    increment_build_number(xcodeproj: "Runner.xcodeproj")
+  end
+
+end

@@ -1,0 +1,73 @@
+# ============================================================
+# ATHLYTIX — Android Fastlane
+# ============================================================
+# Setup:
+#   1. gem install fastlane
+#   2. Place service-account.json in android/fastlane/
+#   3. Run: cd android && fastlane beta  (or release)
+# ============================================================
+
+default_platform(:android)
+
+platform :android do
+
+  # ── Build signed release AAB ─────────────────────────────
+  lane :build do
+    gradle(
+      task:             "bundle",
+      build_type:       "Release",
+      project_dir:      "./",
+      print_command:    false,
+      properties: {
+        "android.injected.signing.store.file"     => ENV["KEYSTORE_PATH"],
+        "android.injected.signing.store.password" => ENV["KEYSTORE_PASSWORD"],
+        "android.injected.signing.key.alias"      => ENV["KEY_ALIAS"],
+        "android.injected.signing.key.password"   => ENV["KEY_PASSWORD"],
+      }
+    )
+  end
+
+  # ── Internal track (fast feedback) ───────────────────────
+  lane :internal do
+    build
+    upload_to_play_store(
+      track:              "internal",
+      release_status:     "draft",
+      aab:                "../build/app/outputs/bundle/release/app-release.aab",
+      skip_upload_apk:    true,
+      skip_upload_metadata: false,
+    )
+  end
+
+  # ── Beta (open testing) ───────────────────────────────────
+  lane :beta do
+    build
+    upload_to_play_store(
+      track:           "beta",
+      release_status:  "completed",
+      aab:             "../build/app/outputs/bundle/release/app-release.aab",
+      skip_upload_apk: true,
+    )
+  end
+
+  # ── Production ────────────────────────────────────────────
+  lane :release do
+    build
+    upload_to_play_store(
+      track:              "production",
+      release_status:     "completed",
+      aab:                "../build/app/outputs/bundle/release/app-release.aab",
+      skip_upload_apk:    true,
+      skip_upload_metadata: false,
+    )
+  end
+
+  # ── Bump version ─────────────────────────────────────────
+  lane :bump do |options|
+    increment_version_code(
+      gradle_file_path: "app/build.gradle",
+      amount:           1,
+    )
+  end
+
+end
