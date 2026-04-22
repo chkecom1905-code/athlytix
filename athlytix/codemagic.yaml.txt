@@ -9,15 +9,12 @@ workflows:
     scripts:
       - name: Install dependencies
         script: |
-          cd athlytix
           flutter pub get
       - name: Install pods
         script: |
-          cd athlytix/ios
-          pod install
+          find . -name "Podfile" -execdir pod install \;
       - name: Build iOS
         script: |
-          cd athlytix
           flutter build ios --release --no-codesign
     artifacts:
-      - athlytix/build/ios/iphoneos/*.app
+      - build/ios/iphoneos/*.app
