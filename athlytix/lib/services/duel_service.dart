@@ -5,7 +5,7 @@ import 'dart:async';
 import 'dart:math';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../main.dart';
-import '../models/duel_model.dart';
+import '../models/move_model.dart';
 import '../models/user_model.dart';
 import 'auth_service.dart';
 

@@ -362,6 +362,7 @@ class MoveData {
   });
 
   bool get isPro => !isFree;
+  String get difficultyLabel { switch(difficulty) { case MoveDifficulty.debutant: return "Débutant"; case MoveDifficulty.intermediaire: return "Intermédiaire"; case MoveDifficulty.avance: return "Avancé"; case MoveDifficulty.elite: return "Élite"; } }
   String get categoryLabel => category.label;
 }
 

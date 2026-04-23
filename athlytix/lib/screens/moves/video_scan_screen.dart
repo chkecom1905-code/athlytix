@@ -195,7 +195,12 @@ class _VideoScanScreenState extends State<VideoScanScreen>
   // Stub pose for fallback
   Pose _emptyPose() {
     // Returns pose with empty landmarks — checks will mostly fail gracefully
+<<<<<<< Updated upstream
    return Pose(landmarks: {});
+=======
+    return Pose(landmarks: {});
+  }
+>>>>>>> Stashed changes
 
   @override
   Widget build(BuildContext context) {
@@ -628,10 +633,17 @@ class _PosePainter extends CustomPainter {
 
 // ── Corner bracket painter ────────────────────────────────
 class _CornerPainter extends CustomPainter {
+<<<<<<< Updated upstream
   bool isTop;
   bool isLeft;
   double strokeW;
   Color color;
+=======
+  final bool isTop;
+  final bool isLeft;
+  final double strokeW;
+  final Color color;
+>>>>>>> Stashed changes
   _CornerPainter(this.isTop, this.isLeft, this.strokeW, this.color);
 
   @override
@@ -642,6 +654,7 @@ class _CornerPainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
     final path = Path();
     if (isTop && isLeft) {
+<<<<<<< Updated upstream
       path.moveTo(0, s.height);
       path.lineTo(0, 0);
       path.lineTo(s.width, 0);
@@ -653,6 +666,13 @@ class _CornerPainter extends CustomPainter {
       path.moveTo(0, s.height);
       path.lineTo(s.width, s.height);
       path.lineTo(s.width, 0);
+=======
+      path.moveTo(0, s.height); path.lineTo(0, 0); path.lineTo(s.width, 0);
+    } else if (isTop && !isLeft) {
+      path.moveTo(0, 0); path.lineTo(s.width, 0); path.lineTo(s.width, s.height);
+    } else if (!isTop && isLeft) {
+      path.moveTo(0, 0); path.lineTo(0, s.height); path.lineTo(s.width, s.height);
+>>>>>>> Stashed changes
     } else {
       path.moveTo(0, 0);
       path.lineTo(0, s.height);

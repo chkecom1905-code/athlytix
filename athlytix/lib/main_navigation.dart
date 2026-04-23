@@ -99,7 +99,7 @@ class _BottomNav extends StatelessWidget {
     _NavItem(icon: Icons.home_rounded,           label: 'Accueil'),
     _NavItem(icon: Icons.fitness_center_rounded, label: 'Train'),
     _NavItem(icon: Icons.videocam_rounded,        label: 'Moves'),
-    _NavItem(icon: Icons.swords_rounded,          label: 'Duels'),
+    _NavItem(icon: Icons.sports_mma,          label: 'Duels'),
     _NavItem(icon: Icons.menu_book_rounded,       label: 'Progs'),
     _NavItem(icon: Icons.auto_awesome_rounded,    label: 'Coach IA', isCoach: true),
     _NavItem(icon: Icons.person_rounded,          label: 'Profil'),

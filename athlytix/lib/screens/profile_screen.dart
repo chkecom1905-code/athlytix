@@ -86,7 +86,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget _xpBar(UserProfile? p) {
     final xp   = p?.xp ?? 0;
     final lvl  = p?.level ?? 1;
-    final prog = p?.levelProgress ?? 0.0;
+    final prog = p?.xpProgress ?? 0.0;
     final cur  = p?.xpProgress ?? 0;
     final next = p?.xpForNextLevel ?? 500;
     return Container(

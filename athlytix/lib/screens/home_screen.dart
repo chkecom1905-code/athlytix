@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget _xpCard(UserProfile? p) {
     final xp    = p?.xp ?? 0;
     final level = p?.level ?? 1;
-    final prog  = p?.levelProgress ?? 0.0;
+    final prog  = p?.xpProgress ?? 0.0;
     final next  = p?.xpForNextLevel ?? 500;
     final cur   = p?.xpProgress ?? 0;
 
