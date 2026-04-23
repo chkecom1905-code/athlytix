@@ -96,7 +96,7 @@ class _ChallengeCard extends StatelessWidget {
         colors: [Color(0xFF8E9BB0), Color(0xFF5E6B80)]);
       case 'Or':      return AppColors.orangeGradient;
       case 'Platine': return AppColors.purpleGradient;
-      default:        return [const Color(0xFF1C1C30), const Color(0xFF0F0F1E)];
+      default:        return const LinearGradient(colors: [Color(0xFF1C1C30), Color(0xFF0F0F1E)]);
     }
   }
 
