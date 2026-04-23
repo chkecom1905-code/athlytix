@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../main.dart';
-import '../../models/duel_model.dart';
+import '../../models/move_model.dart';
 import '../../models/user_model.dart';
 import '../../services/duel_service.dart';
 import '../../widgets/levelup_dialog.dart';
