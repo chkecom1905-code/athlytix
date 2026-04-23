@@ -628,21 +628,39 @@ class _PosePainter extends CustomPainter {
 
 // ── Corner bracket painter ────────────────────────────────
 class _CornerPainter extends CustomPainter {
-  final bool isTop;
-  final bool isLeft;
-  final double strokeW;
-  final Color color;
+  bool isTop;
+  bool isLeft;
+  double strokeW;
+  Color color;
   _CornerPainter(this.isTop, this.isLeft, this.strokeW, this.color);
 
   @override
   void paint(Canvas canvas, Size s) {
-    final p = Paint()..color = color..strokeWidth = strokeW..style = PaintingStyle.stroke;
+    final p = Paint()
+      ..color = color
+      ..strokeWidth = strokeW
+      ..style = PaintingStyle.stroke;
     final path = Path();
     if (isTop && isLeft) {
-      path.moveTo(0, s.height); path.lineTo(0, 0); path.lineTo(s.width, 0);
+      path.moveTo(0, s.height);
+      path.lineTo(0, 0);
+      path.lineTo(s.width, 0);
     } else if (isTop && !isLeft) {
-      path.moveTo(0, 0); path.lineTo(s.width, 0); path.lineTo(s.width, s.height);
-    } else if (!isTop && isLeft) {
-      path.moveTo(0, 0); path.lineTo(0, s.height); path.lineTo(s.width, s.height);
+      path.moveTo(0, 0);
+      path.lineTo(s.width, 0);
+      path.lineTo(s.width, s.height);
+    } else if (!isTop && !isLeft) {
+      path.moveTo(0, s.height);
+      path.lineTo(s.width, s.height);
+      path.lineTo(s.width, 0);
     } else {
-      path.mov
+      path.moveTo(0, 0);
+      path.lineTo(0, s.height);
+      path.lineTo(s.width, s.height);
+    }
+    canvas.drawPath(path, p);
+  }
+
+  @override
+  bool shouldRepaint(_) => false;
+}
