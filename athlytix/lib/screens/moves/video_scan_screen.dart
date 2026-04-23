@@ -628,7 +628,8 @@ class _PosePainter extends CustomPainter {
 
 // ── Corner bracket painter ────────────────────────────────
 class _CornerPainter extends CustomPainter {
-  final bool top, left;
+  final bool top;
+  final bool left;
   final double strokeW;
   final Color color;
   _CornerPainter(this.top, this.left, this.strokeW, this.color);
