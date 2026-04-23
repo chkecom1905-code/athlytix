@@ -15,17 +15,22 @@ workflows:
         script: |
           cd athlytix
           flutter create --platforms=ios .
-      - name: Set Team ID
-        script: |
-          cd athlytix/ios
-          sed -i '' 's/DEVELOPMENT_TEAM = "";/DEVELOPMENT_TEAM = "U3XBJL6T8W";/g' Runner.xcodeproj/project.pbxproj
       - name: Install pods
         script: |
           cd athlytix/ios
           pod install --repo-update
       - name: Build iOS
         script: |
-          cd athlytix
-          flutter build ios --release --no-codesign
+          cd athlytix/ios
+          xcodebuild \
+            -workspace Runner.xcworkspace \
+            -scheme Runner \
+            -configuration Release \
+            -destination generic/platform=iOS \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            DEVELOPMENT_TEAM=U3XBJL6T8W \
+            clean build
     artifacts:
-      - athlytix/build/ios/iphoneos/*.app
+      - "**/*.app"
