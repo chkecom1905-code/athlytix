@@ -2,10 +2,15 @@ workflows:
   ios-workflow:
     name: ATHLYTIX iOS
     max_build_duration: 120
+    integrations:
+      app_store_connect: Codemagic
     environment:
       flutter: stable
       xcode: latest
       cocoapods: default
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.athlytix.athlytix
     scripts:
       - name: Install dependencies
         script: |
@@ -19,18 +24,13 @@ workflows:
         script: |
           cd athlytix/ios
           pod install --repo-update
-      - name: Build iOS
+      - name: Build IPA
         script: |
-          cd athlytix/ios
-          xcodebuild \
-            -workspace Runner.xcworkspace \
-            -scheme Runner \
-            -configuration Release \
-            -destination generic/platform=iOS \
-            CODE_SIGNING_ALLOWED=NO \
-            CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY="" \
-            DEVELOPMENT_TEAM=U3XBJL6T8W \
-            clean build
+          cd athlytix
+          flutter build ipa --release
     artifacts:
-      - "**/*.app"
+      - athlytix/build/ios/ipa/*.ipa
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
