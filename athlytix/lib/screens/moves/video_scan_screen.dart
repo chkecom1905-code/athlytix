@@ -628,27 +628,21 @@ class _PosePainter extends CustomPainter {
 
 // ── Corner bracket painter ────────────────────────────────
 class _CornerPainter extends CustomPainter {
-  final bool top;
-  final bool left;
+  final bool isTop;
+  final bool isLeft;
   final double strokeW;
   final Color color;
-  _CornerPainter(this.top, this.left, this.strokeW, this.color);
+  _CornerPainter(this.isTop, this.isLeft, this.strokeW, this.color);
 
   @override
   void paint(Canvas canvas, Size s) {
     final p = Paint()..color = color..strokeWidth = strokeW..style = PaintingStyle.stroke;
     final path = Path();
-    if (top && left) {
+    if (isTop && isLeft) {
       path.moveTo(0, s.height); path.lineTo(0, 0); path.lineTo(s.width, 0);
-    } else if (top && !left) {
+    } else if (isTop && !isLeft) {
       path.moveTo(0, 0); path.lineTo(s.width, 0); path.lineTo(s.width, s.height);
-    } else if (!top && left) {
+    } else if (!isTop && isLeft) {
       path.moveTo(0, 0); path.lineTo(0, s.height); path.lineTo(s.width, s.height);
     } else {
-      path.moveTo(0, s.height); path.lineTo(s.width, s.height); path.lineTo(s.width, 0);
-    }
-    canvas.drawPath(path, p);
-  }
-
-  @override bool shouldRepaint(_) => false;
-}
+      path.mov
