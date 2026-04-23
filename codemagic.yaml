@@ -6,8 +6,6 @@ workflows:
       flutter: stable
       xcode: latest
       cocoapods: default
-      vars:
-        BUNDLE_ID: "com.athlytix.athlytix"
     scripts:
       - name: Install dependencies
         script: |
@@ -17,11 +15,15 @@ workflows:
         script: |
           cd athlytix
           flutter create --platforms=ios .
+      - name: Set Team ID
+        script: |
+          cd athlytix/ios
+          sed -i '' 's/DEVELOPMENT_TEAM = "";/DEVELOPMENT_TEAM = "U3XBJL6T8W";/g' Runner.xcodeproj/project.pbxproj
       - name: Install pods
         script: |
           cd athlytix/ios
           pod install --repo-update
-      - name: Build iOS no sign
+      - name: Build iOS
         script: |
           cd athlytix
           flutter build ios --release --no-codesign
