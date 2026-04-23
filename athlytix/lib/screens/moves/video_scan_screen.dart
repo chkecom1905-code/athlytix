@@ -195,8 +195,7 @@ class _VideoScanScreenState extends State<VideoScanScreen>
   // Stub pose for fallback
   Pose _emptyPose() {
     // Returns pose with empty landmarks — checks will mostly fail gracefully
-    return const Pose(landmarks: {});
-  }
+   return Pose(landmarks: {});
 
   @override
   Widget build(BuildContext context) {
