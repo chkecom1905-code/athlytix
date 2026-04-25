@@ -82,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
         const SizedBox(width: 12),
-        Text('BALLVYN',
+        Text('ATHLYTIX',
           style: GoogleFonts.inter(
             color: Colors.white, fontSize: 22,
             fontWeight: FontWeight.w800, letterSpacing: 2,

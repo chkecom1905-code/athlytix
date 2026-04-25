@@ -18,18 +18,18 @@ Future<void> main() async {
   ));
   await Supabase.initialize(url: supabaseUrl, anonKey: supabaseAnonKey);
   await LanguageService.instance.init();
-  runApp(const BallvynApp());
+  runApp(const AthlytixApp());
 }
 
 final supabase = Supabase.instance.client;
 
-class BallvynApp extends StatelessWidget {
-  const BallvynApp({super.key});
+class AthlytixApp extends StatelessWidget {
+  const AthlytixApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'BALLVYN',
+      title: 'ATHLYTIX',
       debugShowCheckedModeBanner: false,
       theme: _buildTheme(),
       home: const _StartGate(),
