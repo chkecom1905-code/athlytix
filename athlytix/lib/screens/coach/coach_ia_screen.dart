@@ -444,7 +444,7 @@ class _CoachIaScreenState extends State<CoachIaScreen>
                     shape: BoxShape.circle),
                   child: const Center(child: Text('✨', style: TextStyle(fontSize: 18)))),
                 const SizedBox(width: 10),
-                Text('Coach ATHLYTIX', style: AppTextStyles.heading3
+                Text('Coach BALLVYN', style: AppTextStyles.heading3
                   .copyWith(color: AppColors.secondary)),
               ]),
               const SizedBox(height: 16),
