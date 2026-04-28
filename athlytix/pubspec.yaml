@@ -1,5 +1,5 @@
 name: athlytix
-description: BALLVYN - Train Like A Pro. Basketball training app with AI coaching.
+description: BALLVYN - Train Like A Pro
 version: 1.0.7+7
 publish_to: none
 
@@ -9,14 +9,19 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  supabase_flutter: ^2.3.0
+  # Firebase
+  firebase_core: ^3.1.0
+  firebase_auth: ^5.1.0
+  cloud_firestore: ^5.1.0
+  # Caméra & permissions
+  camera: ^0.10.5+9
+  permission_handler: ^11.3.0
+  # Achats intégrés (StoreKit - OBLIGATOIRE pour App Store)
   in_app_purchase: ^3.1.13
+  # Utilitaires
   http: ^1.2.0
   shared_preferences: ^2.2.2
   flutter_animate: ^4.5.0
-  google_mlkit_pose_detection: ^0.10.0
-  camera: ^0.10.5+9
-  permission_handler: ^11.3.0
   url_launcher: ^6.2.5
 
 dev_dependencies:
@@ -28,4 +33,3 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-    - assets/icons/
