@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'screens/splash_screen.dart';
-
-const String _supabaseUrl = String.fromEnvironment(
-  'SUPABASE_URL',
-  defaultValue: 'https://YOUR_PROJECT.supabase.co',
-);
-const String _supabaseKey = String.fromEnvironment(
-  'SUPABASE_KEY',
-  defaultValue: 'YOUR_ANON_KEY',
-);
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // Orientation portrait uniquement
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
+  // Barre de statut transparente
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.light,
   ));
-  await Supabase.initialize(url: _supabaseUrl, anonKey: _supabaseKey);
+
+  // Initialiser Firebase (utilise GoogleService-Info.plist automatiquement)
+  await Firebase.initializeApp();
+
   runApp(const BallvynApp());
 }
 
@@ -42,9 +40,10 @@ class BallvynApp extends StatelessWidget {
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF07070F),
           elevation: 0,
-          iconTheme: IconThemeData(color: Colors.white),
           titleTextStyle: TextStyle(
-            color: Colors.white, fontSize: 20, fontWeight: FontWeight.w800,
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w800,
           ),
         ),
       ),
