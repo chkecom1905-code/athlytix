@@ -54,16 +54,15 @@
 
 <key>SKAdNetworkItems</key>
 <array>
-  <dict>
-    <key>SKAdNetworkIdentifier</key>
-    <string>cstr6suwn9.skadnetwork</string>
-  </dict>
-</array>
+<dict>
+   ... toutes les clés existantes ...
 
-<key>ITSAppUsesNonExemptEncryption</key>
-<false/>
+   <key>NSCameraUsageDescription</key>
+   <string>BALLVYN utilise la caméra...</string>
+   <key>NSMicrophoneUsageDescription</key>
+   <string>BALLVYN utilise le micro...</string>
+   <key>CFBundleDisplayName</key>
+   <string>BALLVYN</string>
 
-<key>CFBundleDisplayName</key>
-<string>BALLVYN</string>
-
+</dict>
 </plist>
