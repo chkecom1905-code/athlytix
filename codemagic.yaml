@@ -33,9 +33,10 @@ workflows:
       - name: Build IPA
         script: |
           cd athlytix
-          flutter build ipa --release
+          flutter build ipa --release --export-options-plist=/Users/builder/export_options.plist
     artifacts:
       - athlytix/build/ios/ipa/*.ipa
+      - athlytix/build/ios/archive/*.xcarchive
     publishing:
       app_store_connect:
         auth: integration
