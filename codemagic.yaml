@@ -24,10 +24,27 @@ workflows:
         script: |
           cd athlytix/ios
           pod install --repo-update
-      - name: Update pods with privacy manifests
+      - name: Add missing privacy manifests
         script: |
-          cd athlytix/ios
-          pod update GTMSessionFetcher GoogleToolboxForMac
+          PRIVACY_CONTENT='<?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>NSPrivacyTracking</key>
+            <false/>
+            <key>NSPrivacyCollectedDataTypes</key>
+            <array/>
+            <key>NSPrivacyAccessedAPITypes</key>
+            <array/>
+          </dict>
+          </plist>'
+
+          for SDK in GTMSessionFetcher GoogleToolboxForMac; do
+            find "$CM_BUILD_DIR/athlytix/ios" -name "${SDK}.framework" -type d | while read framework_path; do
+              echo "Adding PrivacyInfo.xcprivacy to $framework_path"
+              echo "$PRIVACY_CONTENT" > "$framework_path/PrivacyInfo.xcprivacy"
+            done
+          done
       - name: Initialize keychain
         script: keychain initialize
       - name: Add certificates to keychain
