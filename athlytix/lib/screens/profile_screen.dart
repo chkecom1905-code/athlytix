@@ -217,7 +217,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           const SizedBox(height: 22),
           const Text('💎', style: TextStyle(fontSize: 52)),
           const SizedBox(height: 14),
-          Text('Premium ATHLYTIX', style: AppTextStyles.heading2, textAlign: TextAlign.center),
+          Text('Premium BALLVYN', style: AppTextStyles.heading2, textAlign: TextAlign.center),
           const SizedBox(height: 8),
           Text('Accède à tous les contenus premium et analyses détaillées.',
             style: AppTextStyles.body, textAlign: TextAlign.center),
