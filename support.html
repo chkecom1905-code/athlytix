@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support – ATHLYTIX</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #1e1e1e;
+      --accent: #f5c842;
+      --accent2: #ff5722;
+      --text: #e8e8e8;
+      --muted: #777;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      padding: 48px 40px 32px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo-mark {
+      width: 48px;
+      height: 48px;
+      background: var(--accent);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-mark svg { width: 28px; height: 28px; }
+
+    .brand { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 3px; color: var(--text); }
+    .brand span { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      padding: 80px 40px 60px;
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      letter-spacing: 4px;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 500px;
+    }
+
+    /* MAIN LAYOUT */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
+    }
+
+    /* CARDS */
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 3px;
+      color: var(--accent);
+      margin: 60px 0 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 16px;
+      transition: border-color 0.2s;
+    }
+
+    .card:hover { border-color: #333; }
+
+    .card h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.8;
+    }
+
+    .card ul { padding-left: 18px; }
+    .card li { margin-bottom: 4px; }
+
+    /* CONTACT BLOCK */
+    .contact-block {
+      background: linear-gradient(135deg, #111 60%, #1a1500);
+      border: 1px solid #2a2200;
+      border-radius: 16px;
+      padding: 40px 32px;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-block h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+    }
+
+    .contact-block p { color: var(--muted); font-size: 0.93rem; }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      width: fit-content;
+      letter-spacing: 0.5px;
+      transition: opacity 0.2s;
+    }
+
+    .contact-link:hover { opacity: 0.85; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 600px) {
+      header, .hero, .container, footer { padding-left: 20px; padding-right: 20px; }
+      .hero { padding-top: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="10" stroke="#000" stroke-width="2"/>
+        <path d="M12 2C12 2 8 7 8 12C8 17 12 22 12 22" stroke="#000" stroke-width="1.5"/>
+        <path d="M12 2C12 2 16 7 16 12C16 17 12 22 12 22" stroke="#000" stroke-width="1.5"/>
+        <path d="M2 12H22" stroke="#000" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="brand">ATHY<span>LY</span>TIX</div>
+  </header>
+
+  <div class="hero" style="max-width:900px;margin:0 auto;">
+    <h1>SUPPORT <em>CENTER</em></h1>
+    <p>Everything you need to get the most out of ATHLYTIX. Browse frequently asked questions or reach out to our team directly.</p>
+  </div>
+
+  <div class="container">
+
+    <div class="section-title">GETTING STARTED</div>
+
+    <div class="card">
+      <h3>How do I create an account?</h3>
+      <p>Open ATHLYTIX and tap <strong>Sign Up</strong>. Enter your name, email, and password, then confirm your email address. You'll receive free tokens to start using Coach IA immediately after registration.</p>
+    </div>
+
+    <div class="card">
+      <h3>What is the demo account?</h3>
+      <p>You can explore the app using the demo account: <strong>demo@athlytix.app</strong>. This account lets you preview features without creating a personal account. Note that data in the demo account may be reset periodically.</p>
+    </div>
+
+    <div class="card">
+      <h3>Which devices are supported?</h3>
+      <p>ATHLYTIX is available on iPhone and iPad running iOS 16 or later. An internet connection is required for Coach IA, real-time duels, and cloud sync.</p>
+    </div>
+
+    <div class="section-title">FEATURES</div>
+
+    <div class="card">
+      <h3>What is Coach IA?</h3>
+      <p>Coach IA is your AI-powered basketball coach, available inside the app. It uses the Claude model by Anthropic to answer training questions, build programs, and give personalised feedback. Coach IA uses a token system — you receive free tokens on sign-up and can purchase additional packs from the app.</p>
+    </div>
+
+    <div class="card">
+      <h3>What is Scan IA?</h3>
+      <p>Scan IA uses your iPhone camera and Google ML Kit to analyse your posture and movement in real time. Point the camera at yourself while performing a move and the app will detect your pose and provide instant feedback.</p>
+    </div>
+
+    <div class="card">
+      <h3>How do Real-Time Duels work?</h3>
+      <p>Challenge other ATHLYTIX users to live skill duels. Both players are connected via Supabase Realtime — complete moves as fast and accurately as possible to win. Duels require an active internet connection.</p>
+    </div>
+
+    <div class="card">
+      <h3>How do I buy more Coach IA tokens?</h3>
+      <ul>
+        <li>Open the app and go to <strong>Coach IA</strong></li>
+        <li>Tap <strong>Get Tokens</strong></li>
+        <li>Select a token pack and confirm the purchase with Face ID / Touch ID</li>
+        <li>Tokens are added instantly to your account</li>
+      </ul>
+      <p style="margin-top:10px;">All purchases are processed securely through Apple's in-app purchase system (StoreKit).</p>
+    </div>
+
+    <div class="section-title">ACCOUNT & BILLING</div>
+
+    <div class="card">
+      <h3>How do I reset my password?</h3>
+      <p>On the login screen, tap <strong>Forgot password?</strong> and enter your email address. You'll receive a reset link within a few minutes. Check your spam folder if it doesn't arrive.</p>
+    </div>
+
+    <div class="card">
+      <h3>How do I delete my account?</h3>
+      <p>To permanently delete your account and all associated data, please contact us at the email below. We will process your request within 30 days in accordance with GDPR / applicable privacy laws.</p>
+    </div>
+
+    <div class="card">
+      <h3>Are in-app purchases refundable?</h3>
+      <p>Token purchases are processed by Apple. For refund requests, please use Apple's official refund process at <strong>reportaproblem.apple.com</strong>. We are unable to issue refunds directly.</p>
+    </div>
+
+    <div class="section-title">CONTACT US</div>
+
+    <div class="contact-block">
+      <h3>Still need help?</h3>
+      <p>Our team typically responds within 48 hours on business days. Please include your device model, iOS version, and a description of the issue.</p>
+      <a class="contact-link" href="mailto:support@athlytix.app">
+        ✉ support@athlytix.app
+      </a>
+    </div>
+
+  </div>
+
+  <footer>
+    <span>© 2025 ATHLYTIX. All rights reserved.</span>
+    <div style="display:flex;gap:24px;">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="support.html">Support</a>
+    </div>
+  </footer>
+
+</body>
+</html>
