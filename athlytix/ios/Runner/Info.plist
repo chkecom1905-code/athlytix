@@ -36,33 +36,20 @@
   <key>UIViewControllerBasedStatusBarAppearance</key><false/>
   <key>CADisableMinimumFrameDurationOnPhone</key><true/>
   <key>UIApplicationSupportsIndirectInputEvents</key><true/>
-</dict>
-<!-- À ajouter dans ios/Runner/Info.plist -->
-<!-- IMPORTANT : colle ces clés dans le bloc <dict> principal -->
-
 <key>NSCameraUsageDescription</key>
-<string>BALLVYN utilise la caméra pour analyser tes mouvements avec le Scan IA et détecter ta technique en temps réel.</string>
+    <string>BALLVYN utilise la caméra pour analyser tes mouvements...</string>
 
-<key>NSPhotoLibraryUsageDescription</key>
-<string>BALLVYN peut accéder à tes photos pour ton profil.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>BALLVYN peut accéder à tes photos pour ton profil.</string>
 
-<key>NSMicrophoneUsageDescription</key>
-<string>BALLVYN utilise le microphone pour les sessions de coaching vocal.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>BALLVYN utilise le microphone pour les sessions de coaching vocal.</string>
 
-<key>NSMotionUsageDescription</key>
-<string>BALLVYN utilise le capteur de mouvement pour analyser tes déplacements pendant l'entraînement.</string>
+    <key>NSMotionUsageDescription</key>
+    <string>BALLVYN utilise le capteur de mouvement...</string>
 
-<key>SKAdNetworkItems</key>
-<array>
-<dict>
-   ... toutes les clés existantes ...
-
-   <key>NSCameraUsageDescription</key>
-   <string>BALLVYN utilise la caméra...</string>
-   <key>NSMicrophoneUsageDescription</key>
-   <string>BALLVYN utilise le micro...</string>
-   <key>CFBundleDisplayName</key>
-   <string>BALLVYN</string>
+    <key>CFBundleDisplayName</key>
+    <string>BALLVYN</string>
 
 </dict>
 </plist>
