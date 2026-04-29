@@ -144,7 +144,7 @@ class _RegisterScreenState extends State<RegisterScreen>
           ),
           const SizedBox(width: 12),
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Text('ATHLYTIX', style: GoogleFonts.inter(
+            Text('BALLVYN', style: GoogleFonts.inter(
               color: AppColors.primary, fontSize: 18, fontWeight: FontWeight.w900,
               letterSpacing: 1)),
             Text('Crée ton compte', style: AppTextStyles.caption),
