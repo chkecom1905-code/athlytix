@@ -1,6 +1,6 @@
 workflows:
   ios-workflow:
-    name: ATHLYTIX iOS
+    name: BALLVYN iOS
     max_build_duration: 120
     integrations:
       app_store_connect: Codemagic
@@ -24,6 +24,10 @@ workflows:
         script: |
           cd athlytix/ios
           pod install --repo-update
+      - name: Update pods with privacy manifests
+        script: |
+          cd athlytix/ios
+          pod update GTMSessionFetcher GoogleToolboxForMac
       - name: Initialize keychain
         script: keychain initialize
       - name: Add certificates to keychain
