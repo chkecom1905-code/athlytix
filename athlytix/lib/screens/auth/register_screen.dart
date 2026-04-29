@@ -323,7 +323,7 @@ class _RegisterScreenState extends State<RegisterScreen>
                       : Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                           Text(_selectedLang.flag, style: const TextStyle(fontSize: 18)),
                           const SizedBox(width: 10),
-                          Text('Démarrer ATHLYTIX', style: GoogleFonts.inter(
+                          Text('Démarrer BALLVYN', style: GoogleFonts.inter(
                             fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white)),
                           const SizedBox(width: 8),
                           const Icon(Icons.rocket_launch_rounded, color: Colors.white, size: 18),
