@@ -24,7 +24,7 @@ class _OnboardingScreenState extends State<OnboardingScreen>
   static const _slides = [
     _Slide(
       emoji: '🏀',
-      title: 'Bienvenue\nsur ATHLYTIX',
+      title: 'Bienvenue\nsur BALLVYN',
       subtitle: 'L\'app de progression basket conçue\npour les vrais compétiteurs.',
       gradient: AppColors.orangeGradient,
       accentColor: AppColors.primary,
