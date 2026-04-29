@@ -24,9 +24,13 @@ workflows:
 
       - name: Patch Podfile with privacy manifests
         script: |
-          cat >> athlytix/ios/Podfile << 'RUBY'
+          python3 << 'EOF'
+          podfile_path = 'athlytix/ios/Podfile'
+          with open(podfile_path, 'r') as f:
+              content = f.read()
 
-          post_install do |installer|
+          injection = """
+            # Inject PrivacyInfo.xcprivacy for SDKs missing it
             privacy_content = <<~PLIST
               <?xml version="1.0" encoding="UTF-8"?>
               <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -41,7 +45,6 @@ workflows:
               </dict>
               </plist>
             PLIST
-
             ['GTMSessionFetcher', 'GoogleToolboxForMac'].each do |pod_name|
               installer.pods_project.targets.each do |target|
                 next unless target.name == pod_name
@@ -54,8 +57,20 @@ workflows:
                 puts "Added PrivacyInfo.xcprivacy to #{pod_name}"
               end
             end
-          end
-          RUBY
+          """
+
+          # Inject right after "post_install do |installer|"
+          patched = content.replace(
+              'post_install do |installer|',
+              'post_install do |installer|' + injection,
+              1
+          )
+
+          with open(podfile_path, 'w') as f:
+              f.write(patched)
+
+          print("Podfile patched successfully")
+          EOF
 
       - name: Install pods
         script: |
