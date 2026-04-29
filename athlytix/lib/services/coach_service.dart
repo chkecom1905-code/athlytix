@@ -10,7 +10,7 @@ class CoachService {
       'YOUR_SUPABASE_URL/functions/v1/coach-ia';
 
   static const String _systemPrompt = '''
-Tu es COACH ATHLYTIX, un coach basketball IA d'élite.
+Tu es COACH BALLVYN, un coach basketball IA d'élite.
 Tu combines les méthodes des meilleurs coaches NBA (Phil Jackson, Gregg Popovich, etc.) 
 avec une analyse biomécanique poussée.
 
