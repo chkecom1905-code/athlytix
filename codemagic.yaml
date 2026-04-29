@@ -4,7 +4,7 @@ workflows:
     max_build_duration: 90
     instance_type: mac_mini_m1
     integrations:
-      app_store_connect: 7L83WSQ64K
+      app_store_connect: 44UDA7A82V
     environment:
       flutter: stable
       xcode: latest
