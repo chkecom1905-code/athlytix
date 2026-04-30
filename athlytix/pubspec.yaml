@@ -1,105 +1,41 @@
-workflows:
-  ios-workflow:
-    name: BALLVYN iOS
-    max_build_duration: 120
-    integrations:
-      app_store_connect: Codemagic
-    environment:
-      flutter: stable
-      xcode: latest
-      cocoapods: default
-      ios_signing:
-        distribution_type: app_store
-        bundle_identifier: com.athlytix.athlytix
-    scripts:
-      - name: Install dependencies
-        script: |
-          cd athlytix
-          flutter pub get
+name: athlytix
+description: BALLVYN - Basketball Progression App
+publish_to: 'none'
+version: 4.1.0+6
 
-      - name: Regenerate iOS folder
-        script: |
-          cd athlytix
-          flutter create --platforms=ios .
+environment:
+  sdk: '^3.11.0'
 
-      - name: Generate app icons
-        script: |
-          cd athlytix
-          dart run flutter_launcher_icons -f pubspec.yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  supabase_flutter: ^2.3.4
+  google_fonts: ^6.1.0
+  percent_indicator: ^4.2.3
+  flutter_animate: ^4.5.0
+  cached_network_image: ^3.3.1
+  camera: ^0.10.5+9
+  google_mlkit_pose_detection: ^0.10.0
+  http: ^1.2.0
+  shared_preferences: ^2.2.2
+  in_app_purchase: ^3.1.13
+  cupertino_icons: ^1.0.8
+  intl: ^0.19.0
+  uuid: ^4.3.3
 
-      - name: Patch Podfile with privacy manifests
-        script: |
-          python3 << 'EOF'
-          podfile_path = 'athlytix/ios/Podfile'
-          with open(podfile_path, 'r') as f:
-              content = f.read()
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.13.1
 
-          injection = """
-            # Inject PrivacyInfo.xcprivacy for SDKs missing it
-            privacy_content = <<~PLIST
-              <?xml version="1.0" encoding="UTF-8"?>
-              <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-              <plist version="1.0">
-              <dict>
-                <key>NSPrivacyTracking</key>
-                <false/>
-                <key>NSPrivacyCollectedDataTypes</key>
-                <array/>
-                <key>NSPrivacyAccessedAPITypes</key>
-                <array/>
-              </dict>
-              </plist>
-            PLIST
-            ['GTMSessionFetcher', 'GoogleToolboxForMac'].each do |pod_name|
-              installer.pods_project.targets.each do |target|
-                next unless target.name == pod_name
-                pod_path = installer.sandbox.pod_dir(pod_name).to_s
-                privacy_file = File.join(pod_path, 'PrivacyInfo.xcprivacy')
-                File.write(privacy_file, privacy_content)
-                group = installer.pods_project.main_group.find_subpath(pod_name, true)
-                ref = group.new_file(privacy_file)
-                target.resources_build_phase.add_file_reference(ref)
-                puts "Added PrivacyInfo.xcprivacy to #{pod_name}"
-              end
-            end
-          """
+flutter_launcher_icons:
+  android: false
+  ios: true
+  image_path: "assets/icon.png"
+  remove_alpha_ios: true
 
-          patched = content.replace(
-              'post_install do |installer|',
-              'post_install do |installer|' + injection,
-              1
-          )
-
-          with open(podfile_path, 'w') as f:
-              f.write(patched)
-
-          print("Podfile patched successfully")
-          EOF
-
-      - name: Install pods
-        script: |
-          cd athlytix/ios
-          pod install --repo-update
-
-      - name: Initialize keychain
-        script: keychain initialize
-
-      - name: Add certificates to keychain
-        script: keychain add-certificates
-
-      - name: Set up profiles
-        script: xcode-project use-profiles
-
-      - name: Build IPA
-        script: |
-          cd athlytix
-          flutter build ipa --release --export-options-plist=/Users/builder/export_options.plist
-
-    artifacts:
-      - athlytix/build/ios/ipa/*.ipa
-      - athlytix/build/ios/archive/*.xcarchive
-
-    publishing:
-      app_store_connect:
-        auth: integration
-        submit_to_testflight: true
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
