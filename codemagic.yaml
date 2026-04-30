@@ -17,16 +17,60 @@ workflows:
           cd athlytix
           flutter pub get
 
-      - name: Generate app icons
-        script: |
-          cd athlytix
-          ls assets/
-          dart run flutter_launcher_icons -f pubspec.yaml
-
       - name: Regenerate iOS folder
         script: |
           cd athlytix
           flutter create --platforms=ios .
+
+      - name: Create AppIcon folder and generate icons
+        script: |
+          cd athlytix
+          mkdir -p ios/Runner/Assets.xcassets/AppIcon.appiconset
+          cat > ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json << 'JSON'
+          {
+            "images": [
+              {"size": "20x20", "idiom": "iphone", "scale": "2x", "filename": "Icon-App-20x20@2x.png"},
+              {"size": "20x20", "idiom": "iphone", "scale": "3x", "filename": "Icon-App-20x20@3x.png"},
+              {"size": "29x29", "idiom": "iphone", "scale": "2x", "filename": "Icon-App-29x29@2x.png"},
+              {"size": "29x29", "idiom": "iphone", "scale": "3x", "filename": "Icon-App-29x29@3x.png"},
+              {"size": "40x40", "idiom": "iphone", "scale": "2x", "filename": "Icon-App-40x40@2x.png"},
+              {"size": "40x40", "idiom": "iphone", "scale": "3x", "filename": "Icon-App-40x40@3x.png"},
+              {"size": "60x60", "idiom": "iphone", "scale": "2x", "filename": "Icon-App-60x60@2x.png"},
+              {"size": "60x60", "idiom": "iphone", "scale": "3x", "filename": "Icon-App-60x60@3x.png"},
+              {"size": "20x20", "idiom": "ipad", "scale": "1x", "filename": "Icon-App-20x20@1x.png"},
+              {"size": "20x20", "idiom": "ipad", "scale": "2x", "filename": "Icon-App-20x20@2x.png"},
+              {"size": "29x29", "idiom": "ipad", "scale": "1x", "filename": "Icon-App-29x29@1x.png"},
+              {"size": "29x29", "idiom": "ipad", "scale": "2x", "filename": "Icon-App-29x29@2x.png"},
+              {"size": "40x40", "idiom": "ipad", "scale": "1x", "filename": "Icon-App-40x40@1x.png"},
+              {"size": "40x40", "idiom": "ipad", "scale": "2x", "filename": "Icon-App-40x40@2x.png"},
+              {"size": "76x76", "idiom": "ipad", "scale": "1x", "filename": "Icon-App-76x76@1x.png"},
+              {"size": "76x76", "idiom": "ipad", "scale": "2x", "filename": "Icon-App-76x76@2x.png"},
+              {"size": "83.5x83.5", "idiom": "ipad", "scale": "2x", "filename": "Icon-App-83.5x83.5@2x.png"},
+              {"size": "1024x1024", "idiom": "ios-marketing", "scale": "1x", "filename": "Icon-App-1024x1024@1x.png"}
+            ],
+            "info": {"version": 1, "author": "xcode"}
+          }
+          JSON
+          python3 << 'PYEOF'
+          from PIL import Image
+          import os
+
+          src = 'assets/icon.png'
+          dest = 'ios/Runner/Assets.xcassets/AppIcon.appiconset'
+          sizes = [
+            ('Icon-App-20x20@1x.png', 20), ('Icon-App-20x20@2x.png', 40), ('Icon-App-20x20@3x.png', 60),
+            ('Icon-App-29x29@1x.png', 29), ('Icon-App-29x29@2x.png', 58), ('Icon-App-29x29@3x.png', 87),
+            ('Icon-App-40x40@1x.png', 40), ('Icon-App-40x40@2x.png', 80), ('Icon-App-40x40@3x.png', 120),
+            ('Icon-App-60x60@2x.png', 120), ('Icon-App-60x60@3x.png', 180),
+            ('Icon-App-76x76@1x.png', 76), ('Icon-App-76x76@2x.png', 152),
+            ('Icon-App-83.5x83.5@2x.png', 167), ('Icon-App-1024x1024@1x.png', 1024),
+          ]
+          img = Image.open(src).convert('RGB')
+          for name, size in sizes:
+            img.resize((size, size), Image.LANCZOS).save(os.path.join(dest, name))
+            print(f'Generated {name}')
+          print('All icons generated!')
+          PYEOF
 
       - name: Patch Podfile with privacy manifests
         script: |
@@ -36,7 +80,6 @@ workflows:
               content = f.read()
 
           injection = """
-            # Inject PrivacyInfo.xcprivacy for SDKs missing it
             privacy_content = <<~PLIST
               <?xml version="1.0" encoding="UTF-8"?>
               <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
