@@ -2,41 +2,39 @@ name: athlytix
 description: BALLVYN - Basketball Progression App
 publish_to: 'none'
 version: 4.1.0+6
+
 environment:
   sdk: '>=3.0.0 <4.0.0'
+
 dependencies:
   flutter:
     sdk: flutter
-  # Supabase
   supabase_flutter: ^2.3.4
-  # UI
   google_fonts: ^6.1.0
   percent_indicator: ^4.2.3
   flutter_animate: ^4.5.0
   cached_network_image: ^3.3.1
-  # Camera & ML
   camera: ^0.10.5+9
   google_mlkit_pose_detection: ^0.10.0
-  # Network
   http: ^1.2.0
-  # State & Storage
   shared_preferences: ^2.2.2
-  # Payments (StoreKit - obligatoire App Store)
   in_app_purchase: ^3.1.13
-  # Utils
   cupertino_icons: ^1.0.8
   intl: ^0.19.0
   uuid: ^4.3.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
   flutter_launcher_icons: ^0.13.1
+
 flutter_launcher_icons:
   android: false
   ios: true
- image_path: "assets/icon.png"
+  image_path: "assets/icon.png"
   remove_alpha_ios: true
+
 flutter:
   uses-material-design: true
   assets:
