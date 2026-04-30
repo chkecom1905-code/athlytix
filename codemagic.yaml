@@ -17,6 +17,11 @@ workflows:
           cd athlytix
           flutter pub get
 
+      - name: Generate app icons
+        script: |
+          cd athlytix
+          dart run flutter_launcher_icons
+
       - name: Regenerate iOS folder
         script: |
           cd athlytix
@@ -59,7 +64,6 @@ workflows:
             end
           """
 
-          # Inject right after "post_install do |installer|"
           patched = content.replace(
               'post_install do |installer|',
               'post_install do |installer|' + injection,
