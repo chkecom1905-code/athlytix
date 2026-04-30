@@ -24,6 +24,7 @@ workflows:
 
       - name: Create AppIcon folder and generate icons
         script: |
+          pip3 install Pillow --quiet
           cd athlytix
           mkdir -p ios/Runner/Assets.xcassets/AppIcon.appiconset
           cat > ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json << 'JSON'
