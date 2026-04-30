@@ -20,7 +20,8 @@ workflows:
       - name: Generate app icons
         script: |
           cd athlytix
-          dart run flutter_launcher_icons
+          ls assets/
+          dart run flutter_launcher_icons -f pubspec.yaml
 
       - name: Regenerate iOS folder
         script: |
